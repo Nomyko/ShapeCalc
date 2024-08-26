@@ -42,7 +42,7 @@ namespace ShapeCalc.Shapes
         /// </summary>
         public bool IsRightAngled()
         {
-            double[] sides = { SideA, SideB, SideC };
+            double[] sides = [SideA, SideB, SideC];
             Array.Sort(sides); // After sorting we know, that sides[2] is the hypotenuse 
 
             return Math.Abs(sides[2] * sides[2] - (sides[0] * sides[0] + sides[1] * sides[1])) < 1e-10;
@@ -55,9 +55,11 @@ namespace ShapeCalc.Shapes
         /// <param name="sideB">The second side.</param>
         /// <param name="sideC">The third side.</param>
         /// <returns>True if the sides can form a triangle; otherwise, false.</returns>
-        private bool IsValidTriangle(double sideA, double sideB, double sideC)
+        private static bool IsValidTriangle(double sideA, double sideB, double sideC)
         {
-            return sideA + sideB > sideC && sideA + sideC > sideB && sideB + sideC > sideA;
+            return (sideA + sideB > sideC) 
+                && (sideA + sideC > sideB) 
+                && (sideB + sideC > sideA);
         }
     }
 }
