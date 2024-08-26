@@ -1,0 +1,19 @@
+/*
+Предположим, что у вас есть три таблицы:
+
+products с колонками product_id и product_name.
+categories с колонками category_id и category_name.
+product_to_category (таблица отношений) с колонками product_id и category_id.
+*/
+
+SELECT 
+    p.product_name, 
+    ISNULL(c.category_name, 'No Category') AS category_name
+FROM 
+    products p
+LEFT JOIN 
+    product_to_category ptc ON p.product_id = ptc.product_id
+LEFT JOIN 
+    categories c ON ptc.category_id = c.category_id
+ORDER BY 
+    p.product_name, c.category_name;
